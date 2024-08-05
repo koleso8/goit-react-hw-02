@@ -16,11 +16,12 @@ const App = () => {
     (acc, value) => acc + value,
     0
   );
+  console.log(Object.values(reviews));
 
+  const reset = () => setReviews();
   const handleClick = item => {
     setReviews(prev => ({ ...prev, [item]: prev[item] + 1 }));
   };
-  console.log(Object.entries(reviews));
 
   return (
     <div>
@@ -29,6 +30,7 @@ const App = () => {
         reviews={Object.keys(reviews)}
         handleClick={handleClick}
         totalFeedback={totalFeedback}
+        reset={reset}
       />
       {totalFeedback > 0 ? (
         <Feedback feedback={Object.entries(reviews)} />

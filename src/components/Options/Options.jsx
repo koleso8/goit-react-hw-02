@@ -1,6 +1,4 @@
-const Options = ({ reviews, handleClick, totalFeedback }) => {
-  console.log(reviews);
-
+const Options = ({ reviews, handleClick, totalFeedback, reset }) => {
   return (
     <ul>
       {reviews.map(item => (
@@ -8,7 +6,7 @@ const Options = ({ reviews, handleClick, totalFeedback }) => {
           <button onClick={() => handleClick(item)}>{item}</button>
         </li>
       ))}
-      {totalFeedback ? <button>Reset</button> : ''}
+      {!totalFeedback || <button onClick={reset}>Reset</button>}
     </ul>
   );
 };
