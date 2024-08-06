@@ -5,11 +5,11 @@ const Feedback = ({ feedback, positive }) => {
   return (
     <ul className={clsx(s.list)}>
       {feedback.map(([key, value]) => (
-        <li key={key}>
+        <li className={clsx(s.item)} key={key}>
           {key}:{value}
         </li>
       ))}
-      <li>Positive: {positive}%</li>
+      <li className={clsx(s.item)}>Positive: {positive}%</li>
     </ul>
   );
 };

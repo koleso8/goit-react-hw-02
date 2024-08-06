@@ -1,12 +1,23 @@
+import clsx from 'clsx';
+import s from './Options.module.css';
+
 const Options = ({ reviews, handleClick, totalFeedback, reset }) => {
   return (
-    <ul>
+    <ul className={clsx(s.list)}>
       {reviews.map(item => (
-        <li key={item}>
-          <button onClick={() => handleClick(item)}>{item}</button>
+        <li className={clsx(s.item)} key={item}>
+          <button className={clsx(s.btnI)} onClick={() => handleClick(item)}>
+            {item}
+          </button>
         </li>
       ))}
-      {!totalFeedback || <button onClick={reset}>Reset</button>}
+      {!totalFeedback || (
+        <li className={clsx(s.item)}>
+          <button className={clsx(s.btnI)} onClick={reset}>
+            Reset
+          </button>
+        </li>
+      )}
     </ul>
   );
 };
