@@ -16,9 +16,17 @@ const App = () => {
     (acc, value) => acc + value,
     0
   );
-  console.log(Object.values(reviews));
 
-  const reset = () => setReviews();
+  const positiveFeedback = Math.round(
+    (Object.values(reviews)[0] / totalFeedback) * 100
+  );
+
+  const reset = () =>
+    setReviews({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
   const handleClick = item => {
     setReviews(prev => ({ ...prev, [item]: prev[item] + 1 }));
   };
@@ -33,7 +41,10 @@ const App = () => {
         reset={reset}
       />
       {totalFeedback > 0 ? (
-        <Feedback feedback={Object.entries(reviews)} />
+        <Feedback
+          feedback={Object.entries(reviews)}
+          positive={positiveFeedback}
+        />
       ) : (
         <Notification />
       )}
